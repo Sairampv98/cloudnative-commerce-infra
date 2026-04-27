@@ -44,16 +44,14 @@ variable "bucket_prefix" {
 
 variable "owner_email" {
   type = string
+  default = "your@email.com"
 }
 
 resource "aws_s3_bucket" "logs" {
   bucket = "${var.bucket_prefix}-${data.aws_caller_identity.current.account_id}-${var.environment}"
   
   tags = {
-    Owner = var.owner_email {
-	type = string
-	default = "your@email.com"
-    }
+    Owner = var.owner_email 
   }
 }
 
